@@ -1,0 +1,1 @@
+Building a blog for game design related articles
