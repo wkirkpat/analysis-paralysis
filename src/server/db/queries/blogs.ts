@@ -40,13 +40,13 @@ export const deleteBlog = async (id: string) =>
   Query("DELETE FROM blogs WHERE id = ?", [id]);
 
 //You can use this to change whether or not a blog is featured, meaning it is emphasized on the front page
-export const changeFeatured = async (id: string, isFeatured: boolean) =>
+export const changeFeatured = async (isFeatured: boolean, id: string) =>
   Query("UPDATE blogs SET featured = ? WHERE id = ?", [isFeatured, id]);
 
 //Get the currently featured articles
 export const getFeatured = async () =>
   Query(
-    "SELECT authors.name, blogs.* FROM blogs WHERE featured = 1 JOIN authors ON blogs.authorid = authors.id ORDER BY date_added LIMIT 5"
+    "SELECT users.firstName, users.lastName, blogs.* FROM blogs JOIN users ON blogs.authorid = users.id WHERE featured = 1 ORDER BY _created DESC LIMIT 5;"
   );
 
 export default {
