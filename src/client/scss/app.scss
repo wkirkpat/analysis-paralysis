@@ -1,5 +1,33 @@
-$theme-colors: (
-    'primary': #0091ea //Covalence Blue!  :D
-);
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 
-@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+.bg-navbar {
+  background-color: #1a535c;
+}
+
+.bg-main {
+  background-color: #f7fff7;
+}
+
+.bg-logo {
+  background-color: #ffe66d;
+}
+
+.bg-tag {
+  background-color: #4ecdc4;
+}
+
+body {
+  background-color: #f7fff7;
+}
+
+.text-yellow {
+  color: #ffe66d;
+}
+
+.badge {
+  border-radius: 0px;
+}
+
+* {
+  font-family: Verdana, Geneva, sans-serif;
+}

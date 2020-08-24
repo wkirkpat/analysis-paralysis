@@ -3,7 +3,7 @@ import { Query } from "../index";
 //This grabs all the blogs, it is intended for the front page so it grabs only the title, content, author name, and date of creation.
 export const getAllBlogs = async () =>
   Query(
-    "SELECT blogs.title, blogs.content, users.firstName, users.lastName, blogs._created FROM blogs JOIN users ON blogs.authorid = users.id;"
+    "SELECT blogs.title, blogs.id, blogs.content, users.firstName, users.lastName, blogs._created FROM blogs JOIN users ON blogs.authorid = users.id;"
   );
 
 //This is intended to grab one blog for when a user clicks on a blog. Tags are grabbed from a different table and using a different query
@@ -46,7 +46,7 @@ export const changeFeatured = async (isFeatured: boolean, id: string) =>
 //Get the currently featured articles
 export const getFeatured = async () =>
   Query(
-    "SELECT users.firstName, users.lastName, blogs.* FROM blogs JOIN users ON blogs.authorid = users.id WHERE featured = 1 ORDER BY _created DESC LIMIT 5;"
+    "SELECT users.firstName, users.lastName, blogs.* FROM blogs JOIN users ON blogs.authorid = users.id WHERE featured = 1 ORDER BY _created DESC LIMIT 3;"
   );
 
 export default {
