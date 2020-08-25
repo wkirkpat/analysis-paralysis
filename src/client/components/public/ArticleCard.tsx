@@ -3,6 +3,7 @@ import Media from "react-bootstrap/Media";
 import Badge from "react-bootstrap/Badge";
 import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import { json } from "../../utils/api";
+import { Link } from "react-router-dom";
 
 const ArticleCard: React.FC<IArticleCardProps> = (props) => {
   const [tags, setTags] = useState([]);
@@ -49,7 +50,9 @@ const ArticleCard: React.FC<IArticleCardProps> = (props) => {
           </h6>
           <p>
             {description}
-            <span className="text-muted">...Read More</span>
+            <Link to={`/article/${props.id}`}>
+              <span className="text-muted">...Read More</span>
+            </Link>
           </p>
         </Media.Body>
       </Media>

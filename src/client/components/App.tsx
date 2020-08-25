@@ -8,15 +8,19 @@ import {
 } from "react-router-dom";
 import Home from "./public/Home";
 import Navbar from "./shared/Navbar";
+import ArticlePage from "./public/ArticlePage";
 
 const App: React.FC<IAppProps> = () => {
   return (
     <>
-      <Navbar />
       <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-        </Switch>
+        <>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/article/:id" component={ArticlePage} />
+          </Switch>
+        </>
       </Router>
     </>
   );
