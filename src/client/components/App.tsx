@@ -9,6 +9,8 @@ import {
 import Home from "./public/Home";
 import Navbar from "./shared/Navbar";
 import ArticlePage from "./public/ArticlePage";
+import AuthorProfile from "./public/AuthorProfile";
+import BlogsByTag from "./public/BlogsByTag";
 
 const App: React.FC<IAppProps> = () => {
   return (
@@ -18,7 +20,9 @@ const App: React.FC<IAppProps> = () => {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/article/:id" component={ArticlePage} />
+            <Route path="/view/:id" component={ArticlePage} />
+            <Route path="/profile/:id" component={AuthorProfile} />
+            <Route path="/tags/:tag" component={BlogsByTag} />
           </Switch>
         </>
       </Router>

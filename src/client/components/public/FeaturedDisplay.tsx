@@ -18,7 +18,7 @@ const FeaturedDisplay: React.FC<IFeaturedDisplayProps> = (props) => {
               <h3>{blog.title}</h3>
               <p>
                 {description}
-                <Link to={`/article/${blog.id}`}>
+                <Link to={`/view/${blog.id}`}>
                   <span className="text-muted">...Read More</span>
                 </Link>
               </p>

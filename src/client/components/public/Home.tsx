@@ -44,6 +44,7 @@ const Home: React.FC<IHomeProps> = () => {
                 content={blog.content}
                 firstName={blog.firstName}
                 lastName={blog.lastName}
+                authorid={blog.authorid}
                 id={blog.id}
               />
             </>

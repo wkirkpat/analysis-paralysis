@@ -43,14 +43,21 @@ const ArticleCard: React.FC<IArticleCardProps> = (props) => {
           alt="Article Thumbnail"
         />
         <Media.Body>
-          <Badge className="bg-tag mb-2">{tags[0]?.tagName}</Badge>
+          <Link className="text-dark" to={`/tags/${tags[0]?.tagName}`}>
+            <Badge className="bg-tag mb-2">{tags[0]?.tagName}</Badge>
+          </Link>
           <h5>{props.title}</h5>
           <h6 className="card-subtitle mb-2 text-muted">
-            By: {props.firstName} {props.lastName}
+            By:{" "}
+            <Link to={`/profile/${props.authorid}`}>
+              <span className="text-muted">
+                {props.firstName} {props.lastName}
+              </span>
+            </Link>
           </h6>
           <p>
             {description}
-            <Link to={`/article/${props.id}`}>
+            <Link to={`/view/${props.id}`}>
               <span className="text-muted">...Read More</span>
             </Link>
           </p>
@@ -66,6 +73,7 @@ interface IArticleCardProps {
   firstName: string;
   lastName: string;
   id: string;
+  authorid: string;
 }
 
 export default ArticleCard;
