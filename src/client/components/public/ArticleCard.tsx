@@ -12,7 +12,6 @@ const ArticleCard: React.FC<IArticleCardProps> = (props) => {
     try {
       let tags = await json(`/api/tags/${props.id}`);
       setTags(tags[0]);
-      console.log(tags);
     } catch (e) {
       throw e;
     }
@@ -21,14 +20,6 @@ const ArticleCard: React.FC<IArticleCardProps> = (props) => {
   useEffect(() => {
     getTags();
   }, []);
-
-  const firstUpdate = useRef(true);
-  useLayoutEffect(() => {
-    if (firstUpdate.current) {
-      firstUpdate.current = false;
-      return;
-    }
-  });
 
   let description = props.content.replace(/^(.{150}[^\s]*).*/, "$1");
   return (

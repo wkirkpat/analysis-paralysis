@@ -49,6 +49,10 @@ export const getFeatured = async () =>
     "SELECT users.firstName, users.lastName, blogs.* FROM blogs JOIN users ON blogs.authorid = users.id WHERE featured = 1 ORDER BY _created DESC LIMIT 3;"
   );
 
+//Gets all blogs with a given tag
+export const getByTag = async (tag: string) =>
+  Query("CALL spGetBlogsWithTagX(?);", [tag]);
+
 export default {
   getAllBlogs,
   getOneBlog,
@@ -57,4 +61,5 @@ export default {
   deleteBlog,
   changeFeatured,
   getFeatured,
+  getByTag,
 };

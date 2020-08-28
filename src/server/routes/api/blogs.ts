@@ -83,4 +83,14 @@ router.put("/featured/:id", async (req, res) => {
   }
 });
 
+router.get("/tag/:id", async (req, res) => {
+  try {
+    let blogs = await DB.Blogs.getByTag(req.params.id);
+    res.json(blogs);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
+});
+
 export default router;

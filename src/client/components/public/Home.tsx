@@ -37,9 +37,8 @@ const Home: React.FC<IHomeProps> = () => {
       <div className="justify-content-center col-md-8 mx-md-auto">
         {blogs.map((blog) => {
           return (
-            <>
+            <div key={blog.id}>
               <ArticleCard
-                key={blog.id}
                 title={blog.title}
                 content={blog.content}
                 firstName={blog.firstName}
@@ -47,7 +46,7 @@ const Home: React.FC<IHomeProps> = () => {
                 authorid={blog.authorid}
                 id={blog.id}
               />
-            </>
+            </div>
           );
         })}
       </div>
