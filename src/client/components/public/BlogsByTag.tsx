@@ -34,6 +34,7 @@ const BlogsByTag: React.FC<IBlogsByTag> = (props) => {
                 lastName={blog.lastName}
                 authorid={blog.authorid}
                 id={blog.id}
+                date={blog._created}
               />
             </div>
           );

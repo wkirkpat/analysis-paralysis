@@ -4,9 +4,17 @@ import Badge from "react-bootstrap/Badge";
 import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import { json } from "../../utils/api";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const ArticleCard: React.FC<IArticleCardProps> = (props) => {
   const [tags, setTags] = useState([]);
+  const [time, setTime] = useState("");
+
+  const getTime = () => {
+    let newTime = moment(props.date).format("YYYY-MM-DD");
+    newTime = moment(newTime).fromNow();
+    setTime(newTime);
+  };
 
   const getTags = async () => {
     try {
@@ -19,6 +27,7 @@ const ArticleCard: React.FC<IArticleCardProps> = (props) => {
 
   useEffect(() => {
     getTags();
+    getTime();
   }, []);
 
   let description = props.content.replace(/^(.{150}[^\s]*).*/, "$1");
@@ -52,6 +61,7 @@ const ArticleCard: React.FC<IArticleCardProps> = (props) => {
               <span className="text-muted">...Read More</span>
             </Link>
           </p>
+          <p className="text-muted">{time}</p>
         </Media.Body>
       </Media>
     </>
@@ -65,6 +75,7 @@ interface IArticleCardProps {
   lastName: string;
   id: string;
   authorid: string;
+  date: string;
 }
 
 export default ArticleCard;

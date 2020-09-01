@@ -45,6 +45,7 @@ const Home: React.FC<IHomeProps> = () => {
                 lastName={blog.lastName}
                 authorid={blog.authorid}
                 id={blog.id}
+                date={blog._created}
               />
             </div>
           );

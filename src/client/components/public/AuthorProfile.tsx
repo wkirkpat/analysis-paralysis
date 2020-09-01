@@ -67,6 +67,7 @@ const AuthorProfile: React.FC<IAuthorProfileProps> = (props) => {
                   lastName={blog.lastName}
                   authorid={blog.authorid}
                   id={blog.id}
+                  date={blog._created}
                 />
               </div>
             );
