@@ -12,6 +12,8 @@ import ArticlePage from "./public/ArticlePage";
 import AuthorProfile from "./public/AuthorProfile";
 import BlogsByTag from "./public/BlogsByTag";
 import AddBlog from "./admin/AddBlog";
+import Login from "./admin/Login";
+import Register from "./admin/Register";
 
 const App: React.FC<IAppProps> = () => {
   return (
@@ -25,6 +27,8 @@ const App: React.FC<IAppProps> = () => {
             <Route path="/profile/:id" component={AuthorProfile} />
             <Route path="/tags/:tag" component={BlogsByTag} />
             <Route path="/add" component={AddBlog} />
+            <Route path="/login" component={Login} />
+            <Route path="register" component={Register} />
           </Switch>
         </>
       </Router>

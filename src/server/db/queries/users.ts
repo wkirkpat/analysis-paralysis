@@ -15,8 +15,21 @@ export const getUserBlogs = async (id: string) =>
 export const getOneByEmail = async (email: string) =>
   Query("SELECT * FROM users WHERE email = ?", [email]);
 
+export const insert = async (
+  username: string,
+  email: string,
+  password: string,
+  firstName: string,
+  lastName: string
+) =>
+  Query(
+    "INSERT INTO users(username, email, password, firstName, lastName) VALUES(?,?,?,?,?)",
+    [username, email, password, firstName, lastName]
+  );
+
 export default {
   getOneByEmail,
   getUserBlogs,
   getOneById,
+  insert,
 };
