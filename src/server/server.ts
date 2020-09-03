@@ -1,4 +1,7 @@
 import * as express from "express";
+import * as passport from "passport";
+import "./middleware/bearerstrategy";
+import "./middleware/localstrategy";
 import router from "./routes";
 import * as path from "path";
 
@@ -6,6 +9,7 @@ const app = express();
 
 app.use(express.static("public"));
 app.use(express.json());
+app.use(passport.initialize());
 app.use(router);
 
 //This is a fix for being unable to refresh pages. It basically reroutes the user to the index so that the react router can take over

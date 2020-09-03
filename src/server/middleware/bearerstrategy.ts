@@ -1,4 +1,4 @@
-import passport, * as passpoort from "passport";
+import * as passport from "passport";
 import * as bearerStrategy from "passport-http-bearer";
 import { validToken } from "../utils/security/tokens";
 import db from "../db";

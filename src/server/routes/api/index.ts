@@ -2,7 +2,7 @@ import * as express from "express";
 import blogsRouter from "./blogs";
 import usersRouter from "./users";
 import tagsRouter from "./tags";
-import passport from "passport";
+import * as passport from "passport";
 
 const router = express.Router();
 
