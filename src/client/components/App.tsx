@@ -1,11 +1,5 @@
 import * as React from "react";
-import {
-  BrowserRouter as Router,
-  Link,
-  Switch,
-  Route,
-  RouteComponentProps,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./public/Home";
 import Navbar from "./shared/Navbar";
 import ArticlePage from "./public/ArticlePage";
@@ -28,7 +22,7 @@ const App: React.FC<IAppProps> = () => {
             <Route path="/tags/:tag" component={BlogsByTag} />
             <Route path="/add" component={AddBlog} />
             <Route path="/login" component={Login} />
-            <Route path="register" component={Register} />
+            <Route path="/register" component={Register} />
           </Switch>
         </>
       </Router>

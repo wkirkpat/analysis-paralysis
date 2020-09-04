@@ -1,11 +1,34 @@
 import * as React from "react";
 import { json, setAccessToken, User } from "../../utils/api";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 
 const Login: React.FC<ILoginProps> = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isValidLogin, setIsValidLogin] = useState(true);
+
+  const handleClick = async () => {
+    try {
+      let result = await json("/auth/login", "POST", {
+        email: email,
+        password: password,
+      });
+
+      if (result) {
+        setAccessToken(result.token, {
+          userid: result.userid,
+          role: result.role,
+        });
+      } else {
+        setIsValidLogin(false);
+      }
+    } catch (e) {
+      throw e;
+    } finally {
+      props.history.push("/");
+    }
+  };
 
   return (
     <div className="container border border-dark shadow-lg p-2 rounded">
@@ -28,7 +51,9 @@ const Login: React.FC<ILoginProps> = (props) => {
           onChange={(event) => setPassword(event.target.value)}
         />
       </div>
-      <button className="btn btn-primary">Submit</button>
+      <button className="btn btn-primary" onClick={handleClick}>
+        Submit
+      </button>
       <Link to="/register">
         <button type="button" className="btn btn-link ml-3">
           Create Account
@@ -38,6 +63,6 @@ const Login: React.FC<ILoginProps> = (props) => {
   );
 };
 
-interface ILoginProps {}
+interface ILoginProps extends RouteComponentProps {}
 
 export default Login;
