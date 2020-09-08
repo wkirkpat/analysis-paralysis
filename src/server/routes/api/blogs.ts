@@ -3,7 +3,15 @@ import DB from "../../db";
 
 let router = express.Router();
 
-router.get("/", async (req, res) => {
+const isAdmin: express.RequestHandler = (req: any, res, next) => {
+  if (!req.user) {
+    return res.sendStatus(401);
+  } else {
+    return next();
+  }
+};
+
+router.get("/", isAdmin, async (req, res) => {
   try {
     let blogs = await DB.Blogs.getAllBlogs();
     res.json(blogs);

@@ -1,5 +1,5 @@
-import jwt from "jsonwebtoken";
-import crypto from "crypto";
+import * as jwt from "jsonwebtoken";
+import * as crypto from "crypto";
 import config from "../../config";
 import db from "../../db";
 
@@ -8,11 +8,9 @@ export const createToken = async (payload: IPayload) => {
   payload.accesstokenid = tokenid.insertid;
   console.log(payload.accesstokenid);
   payload.unique = crypto.randomBytes(32).toString("hex");
-
   let token = await jwt.sign(payload, config.auth.JWTSecret, {
     expiresIn: "10d",
   });
-
   await db.AccessTokens.update(payload.accesstokenid, token);
   console.log(token);
   return token;
