@@ -9,7 +9,7 @@ export const insert = async (userid: number) =>
   Query("INSERT INTO access_tokens(userid) VALUES (?)", [userid]);
 
 //Adds a token to an existing record
-export const update = async (token: string, id: string) =>
+export const update = async (id: string, token: string) =>
   Query("UPDATE access_tokens SET token = ? WHERE id = ?", [token, id]);
 
 export default {

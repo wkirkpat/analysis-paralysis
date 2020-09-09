@@ -1,7 +1,7 @@
 import * as express from "express";
 import DB from "../../db";
 
-let router = express.Router();
+const router = express.Router();
 
 const isAdmin: express.RequestHandler = (req: any, res, next) => {
   if (!req.user) {
@@ -11,7 +11,7 @@ const isAdmin: express.RequestHandler = (req: any, res, next) => {
   }
 };
 
-router.get("/", isAdmin, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     let blogs = await DB.Blogs.getAllBlogs();
     res.json(blogs);

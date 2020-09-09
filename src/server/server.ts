@@ -7,8 +7,8 @@ import * as path from "path";
 
 const app = express();
 
-app.use(express.static("public"));
 app.use(express.json());
+app.use(express.static("public"));
 app.use(passport.initialize());
 app.use(router);
 

@@ -4,11 +4,10 @@ import config from "../../config";
 import db from "../../db";
 
 export const createToken = async (payload: IPayload) => {
-  let tokenid = await db.AccessTokens.insert(payload.userid);
-  payload.accesstokenid = tokenid.insertid;
-  console.log(payload.accesstokenid);
+  let tokenid: any = await db.AccessTokens.insert(payload.userid);
+  payload.accesstokenid = tokenid.insertId;
   payload.unique = crypto.randomBytes(32).toString("hex");
-  let token = await jwt.sign(payload, config.auth.JWTSecret, {
+  let token = jwt.sign(payload, config.auth.JWTSecret, {
     expiresIn: "10d",
   });
   await db.AccessTokens.update(payload.accesstokenid, token);
@@ -29,7 +28,7 @@ export const validToken = async (token: string) => {
   }
 };
 
-interface IPayload {
+export interface IPayload {
   [key: string]: any;
   userid: number;
   unqiue?: string;

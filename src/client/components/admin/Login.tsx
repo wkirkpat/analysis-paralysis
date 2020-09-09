@@ -25,8 +25,6 @@ const Login: React.FC<ILoginProps> = (props) => {
       }
     } catch (e) {
       throw e;
-    } finally {
-      props.history.push("/");
     }
   };
 
