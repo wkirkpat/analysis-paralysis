@@ -16,6 +16,10 @@ const ArticlePage: React.FC<IArticlePageProps> = (props) => {
     }
   };
 
+  const createMarkup = (content: string) => {
+    return { __html: content };
+  };
+
   useEffect(() => {
     getBlog();
   }, []);
@@ -28,9 +32,10 @@ const ArticlePage: React.FC<IArticlePageProps> = (props) => {
       <hr className="mx-3" />
       <AuthorCard blog={blog} />
       <hr className="mx-3" />
-      <div className="mx-3">
-        <p>{blog[0]?.content}</p>
-      </div>
+      <div
+        className="mx-3"
+        dangerouslySetInnerHTML={createMarkup(blog[0]?.content)}
+      ></div>
     </>
   );
 };

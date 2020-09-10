@@ -37,7 +37,8 @@ router.post("/add", async (req, res) => {
       await DB.Blogs.newBlog(
         req.body.title,
         req.body.content,
-        req.body.authorid
+        req.body.authorid,
+        req.body.description
       )
     );
   } catch (e) {

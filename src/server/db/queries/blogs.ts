@@ -3,7 +3,7 @@ import { Query } from "../index";
 //This grabs all the blogs, it is intended for the front page so it grabs only the title, content, author name, and date of creation.
 export const getAllBlogs = async () =>
   Query(
-    "SELECT blogs.title, blogs.id, blogs.content, blogs.authorid, users.firstName, users.lastName, blogs._created FROM blogs JOIN users ON blogs.authorid = users.id;"
+    "SELECT blogs.title, blogs.description, blogs.id, blogs.content, blogs.authorid, users.firstName, users.lastName, blogs._created FROM blogs JOIN users ON blogs.authorid = users.id;"
   );
 
 //This is intended to grab one blog for when a user clicks on a blog. Tags are grabbed from a different table and using a different query
@@ -17,13 +17,13 @@ export const getOneBlog = async (id: string) =>
 export const newBlog = async (
   title: string,
   content: string,
-  authorid: number
+  authorid: number,
+  description: string
 ) =>
-  Query("INSERT INTO blogs (title, content, authorid) VALUES (?, ?, ?);", [
-    title,
-    content,
-    authorid,
-  ]);
+  Query(
+    "INSERT INTO blogs (title, content, authorid, description) VALUES (?, ?, ?, ?);",
+    [title, content, authorid, description]
+  );
 
 //For editing an existing blog
 export const updateBlog = async (

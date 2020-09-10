@@ -23,4 +23,13 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  try {
+    res.json(await DB.Tags.insert(req.body.blogId, req.body.tagId));
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
+});
+
 export default router;

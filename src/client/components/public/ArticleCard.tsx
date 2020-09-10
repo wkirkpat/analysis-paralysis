@@ -10,6 +10,8 @@ const ArticleCard: React.FC<IArticleCardProps> = (props) => {
   const [tags, setTags] = useState([]);
   const [time, setTime] = useState("");
 
+  // let description = props.content.replace(/^(.{150}[^\s]*).*/, "$1");
+
   const getTime = () => {
     let newTime = moment(props.date).format("YYYY-MM-DD");
     newTime = moment(newTime).fromNow();
@@ -25,12 +27,15 @@ const ArticleCard: React.FC<IArticleCardProps> = (props) => {
     }
   };
 
+  const createMarkup = (description: string) => {
+    return { __html: description };
+  };
+
   useEffect(() => {
     getTags();
     getTime();
   }, []);
 
-  let description = props.content.replace(/^(.{150}[^\s]*).*/, "$1");
   return (
     <>
       <hr className="mx-2" />
@@ -55,12 +60,10 @@ const ArticleCard: React.FC<IArticleCardProps> = (props) => {
               </span>
             </Link>
           </h6>
-          <p>
-            {description}
-            <Link to={`/view/${props.id}`}>
-              <span className="text-muted">...Read More</span>
-            </Link>
-          </p>
+          <div dangerouslySetInnerHTML={createMarkup(props.description)}></div>
+          <Link to={`/view/${props.id}`}>
+            <span className="text-muted">...Read More</span>
+          </Link>
           <p className="text-muted">{time}</p>
         </Media.Body>
       </Media>
@@ -76,6 +79,7 @@ interface IArticleCardProps {
   id: string;
   authorid: string;
   date: string;
+  description: string;
 }
 
 export default ArticleCard;
