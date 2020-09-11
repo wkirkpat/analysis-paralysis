@@ -55,7 +55,8 @@ router.put("/edit/:id", async (req, res) => {
         req.body.content,
         req.body.authorid,
         req.body.tag,
-        req.params.id
+        req.params.id,
+        req.body.description
       )
     );
   } catch (e) {

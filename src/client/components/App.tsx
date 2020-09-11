@@ -8,6 +8,7 @@ import BlogsByTag from "./public/BlogsByTag";
 import AddBlog from "./admin/AddBlog";
 import Login from "./admin/Login";
 import Register from "./admin/Register";
+import EditBlog from "./admin/EditBlog";
 
 const App: React.FC<IAppProps> = () => {
   return (
@@ -23,6 +24,7 @@ const App: React.FC<IAppProps> = () => {
             <Route path="/add" component={AddBlog} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/edit/:id" component={EditBlog} />
           </Switch>
         </>
       </Router>

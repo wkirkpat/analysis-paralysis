@@ -9,7 +9,7 @@ export const getAllBlogs = async () =>
 //This is intended to grab one blog for when a user clicks on a blog. Tags are grabbed from a different table and using a different query
 export const getOneBlog = async (id: string) =>
   Query(
-    "SELECT blogs.title, blogs.id, blogs.content, users.firstName, blogs.authorid, users.lastName, blogs._created FROM blogs JOIN users ON blogs.authorid = users.id WHERE blogs.id = ?;",
+    "SELECT blogs.title, blogs.id, blogs.description, blogs.content, users.firstName, blogs.authorid, users.lastName, blogs._created FROM blogs JOIN users ON blogs.authorid = users.id WHERE blogs.id = ?;",
     [id]
   );
 
@@ -31,9 +31,17 @@ export const updateBlog = async (
   content: string,
   authorid: number,
   tag: string,
-  id: string
+  id: string,
+  description: string
 ) =>
-  Query("CALL spUpdateBlog(?,?,?,?,?);", [title, content, authorid, tag, id]);
+  Query("CALL spUpdateBlog(?,?,?,?,?,?);", [
+    title,
+    content,
+    authorid,
+    tag,
+    id,
+    description,
+  ]);
 
 //For deleting a blog
 export const deleteBlog = async (id: string) =>
