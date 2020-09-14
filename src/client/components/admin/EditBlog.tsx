@@ -3,7 +3,7 @@ import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useState, useEffect } from "react";
 import DOMPurify from "dompurify";
-import { json, User } from "../../utils/api";
+import { json } from "../../utils/api";
 import { RouteComponentProps } from "react-router";
 
 const EditBlog: React.FC<IEditBlog> = (props) => {
@@ -41,6 +41,14 @@ const EditBlog: React.FC<IEditBlog> = (props) => {
       );
       let blogId = results.insertId;
       await json(`/api/blogs/featured/${blogId}`, "PUT", { isFeatured });
+    } catch (e) {
+      throw e;
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      await json(`/api/blogs/delete/${props.match.params.id}`, "DELETE");
     } catch (e) {
       throw e;
     }
@@ -111,6 +119,7 @@ const EditBlog: React.FC<IEditBlog> = (props) => {
         />
       </div>
       <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleDelete}>Delete</button>
     </>
   );
 };
