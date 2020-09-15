@@ -3,13 +3,13 @@ import { Query } from "../index";
 //This grabs all the blogs, it is intended for the front page so it grabs only the title, content, author name, and date of creation.
 export const getAllBlogs = async () =>
   Query(
-    "SELECT blogs.title, blogs.description, blogs.id, blogs.content, blogs.authorid, users.firstName, users.lastName, blogs._created FROM blogs JOIN users ON blogs.authorid = users.id;"
+    "SELECT blogs.title, blogs.game_type, blogs.description, blogs.id, blogs.content, blogs.authorid, users.firstName, users.lastName, blogs._created FROM blogs JOIN users ON blogs.authorid = users.id;"
   );
 
 //This is intended to grab one blog for when a user clicks on a blog. Tags are grabbed from a different table and using a different query
 export const getOneBlog = async (id: string) =>
   Query(
-    "SELECT blogs.title, blogs.id, blogs.description, blogs.content, users.firstName, blogs.authorid, users.lastName, blogs._created FROM blogs JOIN users ON blogs.authorid = users.id WHERE blogs.id = ?;",
+    "SELECT blogs.title, blogs.id, blogs.game_type, blogs.description, blogs.content, users.firstName, blogs.authorid, users.lastName, blogs._created FROM blogs JOIN users ON blogs.authorid = users.id WHERE blogs.id = ?;",
     [id]
   );
 
@@ -61,6 +61,13 @@ export const getFeatured = async () =>
 export const getByTag = async (tag: string) =>
   Query("CALL spGetBlogsWithTagX(?);", [tag]);
 
+//Gets all blogs of a particular type
+export const getByType = async (type: string) =>
+  Query(
+    "SELECT blogs.title, blogs.id, blogs.game_type, blogs.description, blogs.content, users.firstName, blogs.authorid, users.lastName, blogs._created FROM blogs JOIN users ON blogs.authorid = users.id WHERE blogs.game_type = ?",
+    [type]
+  );
+
 export default {
   getAllBlogs,
   getOneBlog,
@@ -70,4 +77,5 @@ export default {
   changeFeatured,
   getFeatured,
   getByTag,
+  getByType,
 };

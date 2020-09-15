@@ -1,16 +1,16 @@
 import * as React from "react";
 import Media from "react-bootstrap/Media";
 import Badge from "react-bootstrap/Badge";
-import { useEffect, useState, useRef, useLayoutEffect } from "react";
+import { useEffect, useState } from "react";
 import { json } from "../../utils/api";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import BoardGames from "./BoardGames";
 
 const ArticleCard: React.FC<IArticleCardProps> = (props) => {
   const [tags, setTags] = useState([]);
   const [time, setTime] = useState("");
-
-  // let description = props.content.replace(/^(.{150}[^\s]*).*/, "$1");
+  const [type, setType] = useState("");
 
   const getTime = () => {
     let newTime = moment(props.date).format("YYYY-MM-DD");
@@ -27,6 +27,14 @@ const ArticleCard: React.FC<IArticleCardProps> = (props) => {
     }
   };
 
+  const getType = () => {
+    if (props.gameType == "BoardGames") {
+      setType("Board Games");
+    } else {
+      setType("Video Games");
+    }
+  };
+
   const createMarkup = (description: string) => {
     return { __html: description };
   };
@@ -34,6 +42,7 @@ const ArticleCard: React.FC<IArticleCardProps> = (props) => {
   useEffect(() => {
     getTags();
     getTime();
+    getType();
   }, []);
 
   return (
@@ -50,7 +59,10 @@ const ArticleCard: React.FC<IArticleCardProps> = (props) => {
         <Media.Body>
           <Link className="text-dark" to={`/tags/${tags[0]?.tagName}`}>
             <Badge className="bg-tag mb-2">{tags[0]?.tagName}</Badge>
-          </Link>
+          </Link>{" "}
+          <Link className="text-dark" to={`/${type}`}>
+            <Badge className="bg-tag mb-2">{type}</Badge>
+          </Link>{" "}
           <h5>{props.title}</h5>
           <h6 className="card-subtitle mb-2 text-muted">
             By:{" "}
@@ -80,6 +92,7 @@ interface IArticleCardProps {
   authorid: string;
   date: string;
   description: string;
+  gameType: string;
 }
 
 export default ArticleCard;

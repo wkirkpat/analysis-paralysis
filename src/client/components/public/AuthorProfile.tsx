@@ -2,7 +2,7 @@ import * as React from "react";
 import Media from "react-bootstrap/Media";
 import { json } from "../../utils/api";
 import { RouteComponentProps } from "react-router";
-import { useState, useEffect, useRef, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import ArticleCard from "./ArticleCard";
 
 const AuthorProfile: React.FC<IAuthorProfileProps> = (props) => {
@@ -68,6 +68,8 @@ const AuthorProfile: React.FC<IAuthorProfileProps> = (props) => {
                   authorid={blog.authorid}
                   id={blog.id}
                   date={blog._created}
+                  description={blog.description}
+                  gameType={blog.game_type}
                 />
               </div>
             );

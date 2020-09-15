@@ -9,6 +9,8 @@ import AddBlog from "./admin/AddBlog";
 import Login from "./admin/Login";
 import Register from "./admin/Register";
 import EditBlog from "./admin/EditBlog";
+import BoardGames from "./public/BoardGames";
+import VideoGames from "./public/VideoGames";
 
 const App: React.FC<IAppProps> = () => {
   return (
@@ -25,6 +27,8 @@ const App: React.FC<IAppProps> = () => {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/edit/:id" component={EditBlog} />
+            <Route path="/boardgames" component={BoardGames} />
+            <Route path="/videogames" component={VideoGames} />
           </Switch>
         </>
       </Router>

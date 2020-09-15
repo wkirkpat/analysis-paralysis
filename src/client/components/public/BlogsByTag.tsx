@@ -35,6 +35,8 @@ const BlogsByTag: React.FC<IBlogsByTag> = (props) => {
                 authorid={blog.authorid}
                 id={blog.id}
                 date={blog._created}
+                description={blog.description}
+                gameType={blog.game_type}
               />
             </div>
           );

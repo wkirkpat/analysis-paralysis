@@ -1,26 +1,16 @@
 import * as React from "react";
-import FeaturedDisplay from "./FeaturedDisplay";
-import ArticleCard from "./ArticleCard";
 import { useState, useEffect } from "react";
+import { RouteComponentProps } from "react-router";
 import { json } from "../../utils/api";
+import ArticleCard from "./ArticleCard";
 
-const Home: React.FC<IHomeProps> = () => {
-  const [featuredBlogs, setFeaturedBlogs] = useState([]);
+const VideoGames: React.FC<IVideoGames> = (props) => {
   const [blogs, setBlogs] = useState([]);
 
   const getBlogs = async () => {
     try {
-      let blogs = await json("/api/blogs");
+      let blogs = await json(`/api/blogs/type/VideoGames`);
       setBlogs(blogs);
-    } catch (e) {
-      throw e;
-    }
-  };
-
-  const getFeatured = async () => {
-    try {
-      let featured = await json("/api/blogs/featured");
-      setFeaturedBlogs(featured);
     } catch (e) {
       throw e;
     }
@@ -28,12 +18,11 @@ const Home: React.FC<IHomeProps> = () => {
 
   useEffect(() => {
     getBlogs();
-    getFeatured();
   }, []);
 
   return (
     <>
-      <FeaturedDisplay blogs={featuredBlogs} />
+      <h3 className="mt-3 ml-3">Video Games</h3>
       <div className="justify-content-center col-md-8 mx-md-auto">
         {blogs.map((blog) => {
           return (
@@ -57,6 +46,6 @@ const Home: React.FC<IHomeProps> = () => {
   );
 };
 
-interface IHomeProps {}
+interface IVideoGames extends RouteComponentProps<{ tag: string }> {}
 
-export default Home;
+export default VideoGames;

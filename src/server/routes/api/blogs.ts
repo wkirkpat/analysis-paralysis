@@ -103,4 +103,14 @@ router.get("/tag/:id", async (req, res) => {
   }
 });
 
+router.get("/type/:id", async (req, res) => {
+  try {
+    let blogs = await DB.Blogs.getByType(req.params.id);
+    res.json(blogs);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
+});
+
 export default router;
