@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { json } from "../../utils/api";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import BoardGames from "./BoardGames";
 
 const ArticleCard: React.FC<IArticleCardProps> = (props) => {
   const [tags, setTags] = useState([]);
