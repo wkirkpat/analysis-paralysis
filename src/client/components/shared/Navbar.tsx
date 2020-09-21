@@ -10,7 +10,10 @@ const Navbar: React.FC<INavbarProps> = () => {
           className="d-flex container-fluid justify-content-between justify-content-md-start bg-navbar p-2"
           style={{ height: "4rem" }}
         >
-          <div className="mt-2" style={{ width: "2rem", height: "2rem" }}>
+          <div
+            className="mt-2 d-md-none"
+            style={{ width: "2rem", height: "2rem" }}
+          >
             <MenuButton />
           </div>
           <div className="h-100">
