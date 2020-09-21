@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import MenuButton from "./MenuButton";
 
 const Navbar: React.FC<INavbarProps> = () => {
   return (
@@ -10,11 +11,7 @@ const Navbar: React.FC<INavbarProps> = () => {
           style={{ height: "4rem" }}
         >
           <div className="mt-2" style={{ width: "2rem", height: "2rem" }}>
-            <img
-              src="/assets/images/menu.png"
-              alt=""
-              className="d-md-none align-self-center img-fluid"
-            />
+            <MenuButton />
           </div>
           <div className="h-100">
             <Link to="/">

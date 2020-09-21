@@ -59,7 +59,7 @@ const ArticleCard: React.FC<IArticleCardProps> = (props) => {
           <Link className="text-dark" to={`/tags/${tags[0]?.tagName}`}>
             <Badge className="bg-tag mb-2">{tags[0]?.tagName}</Badge>
           </Link>{" "}
-          <Link className="text-dark" to={`/${type}`}>
+          <Link className="text-dark" to={`/${props.gameType}`}>
             <Badge className="bg-tag mb-2">{type}</Badge>
           </Link>{" "}
           <h5>{props.title}</h5>
