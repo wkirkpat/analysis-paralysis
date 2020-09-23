@@ -12,7 +12,7 @@ const Navbar: React.FC<INavbarProps> = () => {
         >
           <div
             className="mt-2 d-md-none"
-            style={{ width: "2rem", height: "2rem" }}
+            style={{ width: "3rem", height: "3rem" }}
           >
             <MenuButton />
           </div>

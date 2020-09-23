@@ -39,3 +39,7 @@ p {
 span:hover {
   text-decoration: underline;
 }
+
+.dropdown-toggle::after {
+  content: none;
+}
