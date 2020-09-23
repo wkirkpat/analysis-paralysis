@@ -7,7 +7,7 @@ export const getOneById = async (id: string) =>
 //Gets all blogs associated with a specific user
 export const getUserBlogs = async (id: string) =>
   Query(
-    "SELECT blogs.title, blogs.id, blogs.content, blogs.authorid, users.firstName, users.lastName, blogs._created FROM blogs JOIN users ON blogs.authorid = users.id WHERE authorid = ?",
+    "SELECT blogs.title, blogs.game_type, blogs.id, blogs.content, blogs.authorid, users.firstName, users.lastName, blogs._created FROM blogs JOIN users ON blogs.authorid = users.id WHERE authorid = ?",
     [id]
   );
 
