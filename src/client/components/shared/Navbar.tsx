@@ -33,26 +33,34 @@ const Navbar: React.FC<INavbarProps> = () => {
             />
           </div>
           <ul className="navbar-nav">
-            <li className="nav-item d-none d-md-inline">
-              <a className="nav-link" href="#">
-                Home
-              </a>
-            </li>
-            <li className="nav-item d-none d-md-inline">
-              <a className="nav-link" href="#">
-                Board Games
-              </a>
-            </li>
-            <li className="nav-item d-none d-md-inline">
-              <a className="nav-link" href="#">
-                Video Games
-              </a>
-            </li>
-            <li className="nav-item d-none d-md-inline">
-              <a className="nav-link" href="#">
-                About Us
-              </a>
-            </li>
+            <Link to="/">
+              <li className="nav-item d-none d-md-inline">
+                <a className="nav-link" href="#">
+                  Home
+                </a>
+              </li>
+            </Link>
+            <Link to="/boardgames">
+              <li className="nav-item d-none d-md-inline">
+                <a className="nav-link" href="#">
+                  Board Games
+                </a>
+              </li>
+            </Link>
+            <Link to="/videogames">
+              <li className="nav-item d-none d-md-inline">
+                <a className="nav-link" href="#">
+                  Video Games
+                </a>
+              </li>
+            </Link>
+            <Link to="/about">
+              <li className="nav-item d-none d-md-inline">
+                <a className="nav-link" href="#">
+                  About Us
+                </a>
+              </li>
+            </Link>
           </ul>
         </div>
       </nav>

@@ -48,13 +48,15 @@ const ArticleCard: React.FC<IArticleCardProps> = (props) => {
     <>
       <hr className="mx-2" />
       <Media className="mx-md-5">
-        <img
-          width={128}
-          height={128}
-          className="mr-3 align-self-center"
-          src="https://jgxf2r66dr-flywheel.netdna-ssl.com/wp-content/uploads/sites/3/2017/01/gray-box-1.png"
-          alt="Article Thumbnail"
-        />
+        <Link to={`/view/${props.id}`}>
+          <img
+            width={128}
+            height={128}
+            className="mr-3 align-self-center"
+            src="https://jgxf2r66dr-flywheel.netdna-ssl.com/wp-content/uploads/sites/3/2017/01/gray-box-1.png"
+            alt="Article Thumbnail"
+          />
+        </Link>
         <Media.Body>
           <Link className="text-dark" to={`/tags/${tags[0]?.tagName}`}>
             <Badge className="bg-tag mb-2">{tags[0]?.tagName}</Badge>
