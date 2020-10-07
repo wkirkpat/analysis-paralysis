@@ -43,3 +43,15 @@ span:hover {
 .dropdown-toggle::after {
   content: none;
 }
+
+.button {
+  outline: none !important;
+}
+
+.navbar-div:last-child {
+  margin-left: auto;
+}
+
+.title-date {
+  flex-direction: column;
+}

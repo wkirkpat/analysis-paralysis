@@ -1,11 +1,12 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import MenuButton from "./MenuButton";
+import LoginButton from "../admin/LoginButton";
 
 const Navbar: React.FC<INavbarProps> = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-md navbar-dark bg-navbar sticky-top">
+      <nav className="navbar-div navbar navbar-expand-md navbar-dark bg-navbar sticky-top">
         <div
           className="d-flex container-fluid justify-content-between justify-content-md-start bg-navbar p-2"
           style={{ height: "4rem" }}
@@ -34,35 +35,29 @@ const Navbar: React.FC<INavbarProps> = () => {
           </div>
           <ul className="navbar-nav">
             <Link to="/">
-              <li className="nav-item d-none d-md-inline">
-                <a className="nav-link" href="#">
-                  Home
-                </a>
+              <li className="nav-item d-none d-md-inline text-light ml-2 ">
+                Home
               </li>
             </Link>
             <Link to="/boardgames">
-              <li className="nav-item d-none d-md-inline">
-                <a className="nav-link" href="#">
-                  Board Games
-                </a>
+              <li className="nav-item d-none d-md-inline text-light ml-2">
+                Board Games
               </li>
             </Link>
             <Link to="/videogames">
-              <li className="nav-item d-none d-md-inline">
-                <a className="nav-link" href="#">
-                  Video Games
-                </a>
+              <li className="nav-item d-none d-md-inline text-light ml-2">
+                Video Games
               </li>
             </Link>
             <Link to="/about">
-              <li className="nav-item d-none d-md-inline">
-                <a className="nav-link" href="#">
-                  About Us
-                </a>
+              <li className="nav-item d-none d-md-inline text-light ml-2">
+                About Us
               </li>
             </Link>
+            <li className="nav-item d-none d-md-flex text-light ml-2 login-button"></li>
           </ul>
         </div>
+        <LoginButton />
       </nav>
     </>
   );
